@@ -7,31 +7,23 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <div id="app">
+        {{get}}
+
+    </div>
 </body>
     </html>
     <script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
 <script>
 
-var mixin = {
-    created () {
-        console.log('创建mixin');
-        
-    },
-
-    methods: {
-        call() {
-            console.log('调用mixin中的方法');
+new Vue({
+    el: '#app',
+    computed: {
+        get: () => {
+            console.log(this);
+            
+            return '123'
         }
     }
-}
-
-var vm = new Vue({
-    mixins: [mixin],
-    created(){
-        this.call()
-    },
-
 })
-//  mixin文件是一个对象，可以包含vue组件的任意成分。是分发Vue组件可复用功能的非常灵活的方式，当mixin被组件使用时，所有minxin里的属性/方法会与组件里的属性/方法混合。
 </script>
